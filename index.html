@@ -15,6 +15,9 @@
             Hover your mouse over me for a few seconds to see my dynamically bound title!
         </span>
     </div>
+    <div id="app-3">
+        <span v-if="hoge">Now you see me</span>
+    </div>
     <script>
         var app = new Vue({
             el: '#app',
@@ -26,6 +29,12 @@
             el: '#app-2',
             data: {
                 message: 'You loaded this page on ' + new Date().toLocaleString()
+            }
+        })
+        var app3 = new Vue({
+            el: '#app-3',
+            data: {
+                hoge: true
             }
         })
     </script>
