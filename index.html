@@ -111,6 +111,16 @@
 
             }
         })
+
+        var vmLifeCycleHook = new Vue({
+            data: {
+                a: 1
+            },
+            created: function() {
+                // this はvmLifeCycleHookインスタンスを指します
+                console.log('a is: ' + this.a)
+            }
+        })
     </script>
 </body>
 </html>
