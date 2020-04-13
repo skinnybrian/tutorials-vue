@@ -47,6 +47,11 @@
             ></todo-item>
         </ol>
     </div>
+    <div id="test-text">
+        <p>message: {{ msg }}</p>
+        <p v-once>v-once message: {{ msg }}</p>
+        <button v-on:click="changeFuga">change fuga</button>
+    </div>
     <script>
         var app = new Vue({
             el: '#app',
@@ -119,6 +124,18 @@
             created: function() {
                 // this はvmLifeCycleHookインスタンスを指します
                 console.log('a is: ' + this.a)
+            }
+        })
+
+        var testText = new Vue({
+            el: '#test-text',
+            data: {
+                msg: 'hoge'
+            },
+            methods: {
+                changeFuga: function() {
+                    this.msg = 'fuga'
+                }
             }
         })
     </script>
