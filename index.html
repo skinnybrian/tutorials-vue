@@ -52,6 +52,10 @@
         <p v-once>v-once message: {{ msg }}</p>
         <button v-on:click="changeFuga">change fuga</button>
     </div>
+    <div id="test-rawHtml">
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+    </div>
     <script>
         var app = new Vue({
             el: '#app',
@@ -126,7 +130,6 @@
                 console.log('a is: ' + this.a)
             }
         })
-
         var testText = new Vue({
             el: '#test-text',
             data: {
@@ -136,6 +139,12 @@
                 changeFuga: function() {
                     this.msg = 'fuga'
                 }
+            }
+        })
+        var testRawHtml = new Vue({
+            el: '#test-rawHtml',
+            data: {
+                rawHtml: '<span style="color: red">This should be red.</span>'
             }
         })
     </script>
