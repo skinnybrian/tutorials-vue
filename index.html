@@ -56,6 +56,11 @@
         <p>Using mustaches: {{ rawHtml }}</p>
         <p>Using v-html directive: <span v-html="rawHtml"></span></p>
     </div>
+    <div id="test-bind">
+        <div v-bind:id="dynamicId">hoge</div>
+        <div :id="shorthand">fuga</div>
+        <button v-bind:disabled="isButtonDisabled">piyo</button>
+    </div>
     <script>
         var app = new Vue({
             el: '#app',
@@ -145,6 +150,14 @@
             el: '#test-rawHtml',
             data: {
                 rawHtml: '<span style="color: red">This should be red.</span>'
+            }
+        })
+        var testBind = new Vue({
+            el: '#test-bind',
+            data: {
+                dynamicId: 'hogehoge',
+                shorthand: 'fugafuga',
+                isButtonDisabled: true
             }
         })
     </script>
