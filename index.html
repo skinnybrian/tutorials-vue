@@ -61,6 +61,10 @@
         <div :id="shorthand">fuga</div>
         <button v-bind:disabled="isButtonDisabled">piyo</button>
     </div>
+    <div id="test-javascript">
+        <p>number is {{ number }}</p>
+        <p>number + 101 = {{ number + 100 }}</p>
+    </div>
     <script>
         var app = new Vue({
             el: '#app',
@@ -158,6 +162,12 @@
                 dynamicId: 'hogehoge',
                 shorthand: 'fugafuga',
                 isButtonDisabled: true
+            }
+        })
+        var testJavaScript = new Vue({
+            el: '#test-javascript',
+            data: {
+                number: 1
             }
         })
     </script>
