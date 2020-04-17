@@ -61,6 +61,19 @@
         <div :id="shorthand">fuga</div>
         <button v-bind:disabled="isButtonDisabled">piyo</button>
     </div>
+    <div id="test-javascript">
+        <p>number is {{ number }}</p>
+        <p>number + 101 = {{ number + 100 }}</p>
+    </div>
+    <div id="test-bind-href">
+        <a :href="url">google</a>
+    </div>
+    <div id="test-v-on">
+        <button v-on:click="doSomething">alert</button>
+    </div>
+    <div id="test-dynamic-argument">
+        <a v-bind:[attributeName]="url">Yahoo!</a>
+    </div>
     <script>
         var app = new Vue({
             el: '#app',
@@ -158,6 +171,33 @@
                 dynamicId: 'hogehoge',
                 shorthand: 'fugafuga',
                 isButtonDisabled: true
+            }
+        })
+        var testJavaScript = new Vue({
+            el: '#test-javascript',
+            data: {
+                number: 1
+            }
+        })
+        var testBindHref = new Vue({
+            el: '#test-bind-href',
+            data: {
+                url: 'https://google.com'
+            }
+        })
+        var testVueOn = new Vue({
+            el: '#test-v-on',
+            data: {
+                doSomething: function() {
+                    alert('hogeeeeee');
+                }
+            }
+        })
+        var testDynamicArgument = new Vue({
+            el: '#test-dynamic-argument',
+            data: {
+                attributename: 'href',
+                url: 'https://www.yahoo.co.jp'
             }
         })
     </script>
