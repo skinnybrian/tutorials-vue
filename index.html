@@ -74,6 +74,9 @@
     <div id="test-dynamic-argument">
         <a v-bind:[attributeName]="url">Yahoo!</a>
     </div>
+    <div id="test-on">
+        <a @click="doSomething">v-on click</a>
+    </div>
     <script>
         var app = new Vue({
             el: '#app',
@@ -198,6 +201,14 @@
             data: {
                 attributename: 'href',
                 url: 'https://www.yahoo.co.jp'
+            }
+        })
+        var testOn = new Vue({
+            el: '#test-on',
+            data: {
+                doSomething: function() {
+                    alert('click!');
+                }
             }
         })
     </script>
