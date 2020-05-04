@@ -12,8 +12,10 @@
     </div>
     <div id="example2">
         <p>Original message: "{{ message }}"</p>
+        <!-- methodsを呼び出すときはmethod()みたいな感じで括弧を忘れずにつける -->
         <p>Computed reversed message: "{{ reversedMessage() }}"</p>
     </div>
+    <div id="demo">{{ fullName }}</div>
     <script>
         var vm = new Vue({
             el: '#example',
@@ -21,6 +23,8 @@
                 message: 'Hello'
             },
             computed: {
+                // この例だと、messageに変化が置きない限りはreversedMessageを返す値は常に同じになってしまう。
+                // 逆にキャッシングされるからループ処理とかで使うなど無駄に処理させなくて済む
                 // 算出 getter 関数
                 reversedMessage: function() {
                     // `this` は vm インスタンスを指します
@@ -34,10 +38,23 @@
                 message: 'Hello'
             },
             methods: {
+                // つまり、キャッシングしたくないときは常にMethodを使おうねって感じ
                 // 算出 getter 関数
                 reversedMessage: function() {
                     // `this` は vm インスタンスを指します
                     return this.message.split('').reverse().join('')
+                }
+            }
+        })
+        var vm3 = new Vue({
+            el: '#demo',
+            data: {
+                firstName: 'Foo',
+                lastName: 'Bar'
+            },
+            computed: {
+                fullName: function() {
+                    return this.firstName + ' ' + this.lastName
                 }
             }
         })
