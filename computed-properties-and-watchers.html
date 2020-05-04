@@ -15,6 +15,7 @@
         <!-- methodsを呼び出すときはmethod()みたいな感じで括弧を忘れずにつける -->
         <p>Computed reversed message: "{{ reversedMessage() }}"</p>
     </div>
+    <div id="demo">{{ fullName }}</div>
     <script>
         var vm = new Vue({
             el: '#example',
@@ -42,6 +43,18 @@
                 reversedMessage: function() {
                     // `this` は vm インスタンスを指します
                     return this.message.split('').reverse().join('')
+                }
+            }
+        })
+        var vm3 = new Vue({
+            el: '#demo',
+            data: {
+                firstName: 'Foo',
+                lastName: 'Bar'
+            },
+            computed: {
+                fullName: function() {
+                    return this.firstName + ' ' + this.lastName
                 }
             }
         })
