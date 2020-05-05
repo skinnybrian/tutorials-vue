@@ -16,6 +16,7 @@
         <p>Computed reversed message: "{{ reversedMessage() }}"</p>
     </div>
     <div id="demo">{{ fullName }}</div>
+    <div id="demo-setter">{{ fullName }}</div>
     <script>
         var vm = new Vue({
             el: '#example',
@@ -55,6 +56,27 @@
             computed: {
                 fullName: function() {
                     return this.firstName + ' ' + this.lastName
+                }
+            }
+        })
+        var vm4 = new Vue({
+            el: '#demo-setter',
+            data: {
+                firstName: 'Foo',
+                lastName: 'Bar'
+            },
+            computed: {
+                fullName: {
+                    // getter 関数
+                    get: function() {
+                        return this.firstName + ' ' + this.lastName
+                    },
+                    // setter 関数
+                    set: function(newValue) {
+                        var names = newValue.split(' ')
+                        this.firstName = names[0]
+                        this.lastName = names[names.length - 1]
+                    }
                 }
             }
         })
